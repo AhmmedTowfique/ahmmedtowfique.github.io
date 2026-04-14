@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Towfique Ahmmed — Cloud & Backend Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F8FAFC;
+  --header:#0D1117;
+  --sidebar:#F1F5F9;
+  --text:#1E2533;
+  --muted:#64748B;
+  --faint:#94A3B8;
+  --accent:#0284C7;
+  --accent2:#0D9488;
+  --border:#E2E8F0;
+  --tag-bg:#EFF6FF;
+  --tag-text:#1D4ED8;
+  --tag-border:#BFDBFE;
+  --devops-bg:#F0FDF4;
+  --devops-text:#166534;
+  --devops-border:#BBF7D0;
+  --ai-bg:#FFF7ED;
+  --ai-text:#9A3412;
+  --ai-border:#FED7AA;
+  --db-bg:#FAF5FF;
+  --db-text:#6B21A8;
+  --db-border:#E9D5FF;
+  --mono-bg:#F8FAFC;
+  --mono-text:#475569;
+  --mono-border:#CBD5E1;
+}
+html{font-size:14px;-webkit-font-smoothing:antialiased}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+/* ── LAYOUT ── */
+.page{max-width:960px;margin:0 auto;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.08)}
+
+/* ── HEADER ── */
+.hd{background:linear-gradient(135deg,#0D1117 0%,#0C1F2E 50%,#0D3D38 100%);padding:40px 48px 36px;position:relative;overflow:hidden}
+.hd::before{content:'';position:absolute;top:0;right:0;width:320px;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(2,132,199,.08));pointer-events:none}
+.hd::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2),transparent)}
+
+.hd-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hd-name-block{}
+.hd-name{font-family:'IBM Plex Mono',monospace;font-size:2.4rem;font-weight:700;color:#F8FAFC;letter-spacing:-1px;line-height:1.1;display:flex;align-items:center;gap:10px}
+.cursor{display:inline-block;width:3px;height:2.2rem;background:var(--accent);animation:blink 1.2s step-end infinite;vertical-align:middle;margin-left:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hd-title{font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:500;color:var(--accent);margin-top:8px;letter-spacing:.5px}
+.hd-location{font-size:.82rem;color:#64748B;margin-top:4px;letter-spacing:.3px}
+
+.hd-contact{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.contact-row{display:flex;align-items:center;gap:7px;font-size:.8rem;color:#94A3B8;text-decoration:none;transition:color .2s}
+.contact-row:hover{color:#F8FAFC}
+.contact-row svg{flex-shrink:0;opacity:.7}
+.contact-row span{font-family:'IBM Plex Mono',monospace;letter-spacing:.3px}
+
+/* ── BODY ── */
+.body{display:grid;grid-template-columns:260px 1fr;min-height:600px}
+
+/* ── SIDEBAR ── */
+.sb{background:var(--sidebar);padding:32px 24px;border-right:1px solid var(--border)}
+.sb-section{margin-bottom:28px}
+.sb-section:last-child{margin-bottom:0}
+.sb-title{font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--faint);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+
+/* SKILL GROUPS */
+.skill-group{margin-bottom:14px}
+.skill-group-label{font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:500;border:1px solid;line-height:1.6}
+.tag.blue{background:var(--tag-bg);color:var(--tag-text);border-color:var(--tag-border)}
+.tag.green{background:var(--devops-bg);color:var(--devops-text);border-color:var(--devops-border)}
+.tag.orange{background:var(--ai-bg);color:var(--ai-text);border-color:var(--ai-border)}
+.tag.purple{background:var(--db-bg);color:var(--db-text);border-color:var(--db-border)}
+.tag.gray{background:var(--mono-bg);color:var(--mono-text);border-color:var(--mono-border)}
+
+/* LANG */
+.lang-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.lang-name{font-size:.82rem;font-weight:500;color:var(--text)}
+.lang-level{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);background:#fff;border:1px solid var(--border);padding:1px 7px;border-radius:3px}
+
+/* EDU SIDEBAR */
+.edu-item{margin-bottom:14px}
+.edu-deg{font-size:.8rem;font-weight:600;color:var(--text);line-height:1.4}
+.edu-school{font-size:.75rem;color:var(--muted);margin-top:2px;line-height:1.4}
+.edu-year{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--accent);margin-top:3px}
+
+/* ── MAIN ── */
+.main{padding:32px 36px}
+.section{margin-bottom:32px}
+.section:last-child{margin-bottom:0}
+.sec-title{font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* EXPERIENCE */
+.exp-item{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.exp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.exp-role{font-size:.95rem;font-weight:700;color:var(--text)}
+.exp-date{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--tag-border);padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.exp-company{font-size:.82rem;font-weight:500;color:var(--accent2);margin-bottom:2px}
+.exp-context{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:10px;line-height:1.5}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
+.exp-bullets li{font-size:.82rem;color:#374151;line-height:1.55;padding-left:16px;position:relative}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:2px}
+.exp-bullets li strong{color:var(--text);font-weight:600}
+
+/* PROJECTS */
+.proj-item{margin-bottom:16px;padding:14px 16px;border:1px solid var(--border);border-radius:8px;background:#FAFBFD;transition:border-color .2s,box-shadow .2s}
+.proj-item:hover{border-color:var(--accent);box-shadow:0 0 0 3px rgba(2,132,199,.06)}
+.proj-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.proj-name{font-size:.88rem;font-weight:700;color:var(--text)}
+.proj-link{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:4px;border:1px solid var(--tag-border);padding:2px 8px;border-radius:4px;background:var(--tag-bg);transition:background .2s}
+.proj-link:hover{background:#DBEAFE}
+.proj-desc{font-size:.8rem;color:#4B5563;line-height:1.55}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+
+/* FOOTER */
+.cv-footer{background:linear-gradient(135deg,#0D1117 0%,#0C1F2E 50%,#0D3D38 100%);padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
+.cv-footer-text{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:#475569;letter-spacing:.5px}
+.cv-footer-link{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--accent);text-decoration:none;letter-spacing:.5px}
+.cv-footer-link:hover{color:#38BDF8}
+
+/* PRINT BUTTON */
+.print-btn{position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,#0D1117,#0D3D38);color:#F8FAFC;border:none;padding:10px 18px;border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:opacity .2s;z-index:100}
+.print-btn:hover{background:#1E293B}
+.print-btn svg{opacity:.8}
+
+/* LOAD ANIMATION */
+.fade-in{opacity:0;transform:translateY(12px);animation:fadeUp .5s cubic-bezier(.16,1,.3,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.1s}.d3{animation-delay:.15s}
+.d4{animation-delay:.2s}.d5{animation-delay:.25s}.d6{animation-delay:.3s}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* ── PRINT STYLES ── */
+@media print{
+  .print-btn{display:none}
+  body{background:#fff;font-size:12px}
+  .page{box-shadow:none;max-width:100%}
+  .hd{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sb{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .exp-item{break-inside:avoid}
+  .proj-item{break-inside:avoid}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  .body{grid-template-columns:1fr}
+  .sb{border-right:none;border-bottom:1px solid var(--border)}
+  .hd-top{flex-direction:column;align-items:flex-start}
+  .hd-contact{align-items:flex-start}
+  .hd{padding:28px 24px}
+  .main{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  Print / Save PDF
+</button>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hd">
+    <div class="hd-top">
+      <div class="hd-name-block fade-in d1">
+        <div class="hd-name">
+          Md Towfique Ahmmed<span class="cursor"></span>
+        </div>
+        <div class="hd-title">// Cloud &amp; Backend Engineer · DevOps · Platform</div>
+        <div class="hd-location">📍 München, Germany</div>
+      </div>
+      <div class="hd-contact fade-in d2">
+        
+        <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="contact-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <span>github.com/AhmmedTowfique</span>
+        </a>
+        <a href="https://www.linkedin.com/in/md-towfique-ahmmed-a390105a" target="_blank" rel="noopener" class="contact-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>linkedin.com/in/ahmmedtowfique</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sb">
+
+      <!-- SKILLS -->
+      <div class="sb-section fade-in d3">
+        <div class="sb-title">Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Cloud & Infra</div>
+          <div class="tags">
+            <span class="tag green">AWS EKS</span>
+            <span class="tag green">Azure AKS</span>
+            <span class="tag green">Terraform</span>
+            <span class="tag green">Kubernetes</span>
+            <span class="tag green">Helm</span>
+            <span class="tag green">Argo CD</span>
+            <span class="tag green">Docker</span>
+            <span class="tag green">Ansible</span>
+            <span class="tag green">Nginx</span>
+            <span class="tag green">RBAC</span>
+            <span class="tag green">VPCs</span>
+            <span class="tag green">VMware</span>
+            <span class="tag green">Hyper-V</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">CI/CD & Monitoring</div>
+          <div class="tags">
+            <span class="tag blue">GitHub Actions</span>
+            <span class="tag blue">Jenkins</span>
+            <span class="tag blue">SonarQube</span>
+            <span class="tag blue">Prometheus</span>
+            <span class="tag blue">Grafana</span>
+            <span class="tag blue">Loki</span>
+            <span class="tag blue">Promtail</span>
+            <span class="tag blue">ELK Stack</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Languages & Scripting</div>
+          <div class="tags">
+            <span class="tag gray">Python</span>
+            <span class="tag gray">Bash/Shell</span>
+            <span class="tag gray">PowerShell</span>
+            <span class="tag gray">C# (.NET)</span>
+            <span class="tag gray">Dart/Flutter</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Databases</div>
+          <div class="tags">
+            <span class="tag purple">PostgreSQL</span>
+            <span class="tag purple">Redis</span>
+            <span class="tag purple">MongoDB</span>
+            <span class="tag purple">SQLite</span>
+            <span class="tag purple">ISAM</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI & LLM</div>
+          <div class="tags">
+            <span class="tag orange">Ollama</span>
+            <span class="tag orange">Mistral 7B</span>
+            <span class="tag orange">LLM Integration</span>
+            <span class="tag orange">AI Agent Design</span>
+            <span class="tag orange">Prompt Engineering</span>
+            <span class="tag orange">Streamlit</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Tooling</div>
+          <div class="tags">
+            <span class="tag gray">Git</span>
+            <span class="tag gray">Mercurial</span>
+            <span class="tag gray">Jira</span>
+            <span class="tag gray">Confluence</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="sb-section fade-in d4">
+        <div class="sb-title">Languages</div>
+        <div class="lang-row"><span class="lang-name">German</span><span class="lang-level">Fluent</span></div>
+        <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+        <div class="lang-row"><span class="lang-name">Hindi</span><span class="lang-level">Fluent</span></div>
+        <div class="lang-row"><span class="lang-name">Bengali</span><span class="lang-level">Native</span></div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="sb-section fade-in d5">
+        <div class="sb-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-deg">M.Eng. Information Technology</div>
+          <div class="edu-school">Frankfurt University of Applied Sciences, Germany</div>
+          <div class="edu-year">2016</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">B.Sc. Information & Communication Engineering</div>
+          <div class="edu-school">East-West University, Dhaka, Bangladesh</div>
+          <div class="edu-year">2011</div>
+        </div>
+      </div>
+
+      <!-- EXTRAS -->
+      <div class="sb-section fade-in d6">
+        <div class="sb-title">Additional</div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.6">
+          🚗 Valid Class B Driver's License
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- EXPERIENCE -->
+      <div class="section fade-in d3">
+        <div class="sec-title">Work Experience</div>
+
+        <!-- Job 1 -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Cloud &amp; Backend Engineer</div>
+            <div class="exp-date">Jan 2026 — present</div>
+          </div>
+          <div class="exp-company">Megacom EDV-Lösungen GmbH · Munich</div>
+          <div class="exp-context">Leading the architectural transformation of BDBWin — a 30-year-old core ERP system serving 3,000+ users in the German-speaking building materials and timber trade.</div>
+          <ul class="exp-bullets">
+            <li>Driving force in <strong>architecture decisions, risk assessment, and migration roadmap</strong> for a complete technical transformation at production scale.</li>
+            <li>Leading migration from proprietary <strong>ISAM → PostgreSQL</strong> — replacing a data layer untouched for two decades while maintaining live operations for 100–150 active business customers.</li>
+            <li>Defining <strong>budget frameworks, API interface strategy, and cloud-native architecture principles</strong> ahead of first production rollout (AWS / Azure).</li>
+            <li>Developing the technical backbone for <strong>BDBWin AI</strong> — next-gen ERP with AI-powered features — through clean API abstraction, modular database layer, and cloud-native design.</li>
+          </ul>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Software Developer</div>
+            <div class="exp-date">Sep 2021 — Feb 2025</div>
+          </div>
+          <div class="exp-company">Mentz GmbH · Munich</div>
+          <div class="exp-context">Critical digital infrastructure across five continents, serving millions of passengers daily. Took on DevOps and cloud ownership proactively alongside the core developer role.</div>
+          <ul class="exp-bullets">
+            <li>Identified and solved a systematic bottleneck in the release pipeline of a multi-client architecture — independently designed and implemented full automation. Result: <strong>30% reduction in pipeline runtime.</strong></li>
+            <li>Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — any production incident had direct real-world impact on millions of passengers.</li>
+            <li>Identified approaching end-of-life of the mobile platform early — owned the complete migration decision and implementation. Result: <strong>25% faster development cycles.</strong></li>
+            <li>Initiated and designed the company's <strong>first cloud infrastructure</strong> — all design decisions on high availability, secrets management, pipeline automation, and budget control through to production-ready testing.</li>
+          </ul>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">App Developer</div>
+            <div class="exp-date">Apr 2017 — Aug 2021</div>
+          </div>
+          <div class="exp-company">INFOSOFT GmbH · Koblenz</div>
+          <div class="exp-context">Docutain — a multiple award-winning document scanner app used by several million users worldwide.</div>
+          <ul class="exp-bullets">
+            <li>Developed and optimised features for Docutain across <strong>Android and iOS</strong> — focusing on performance, stability, and user experience at millions-of-users scale.</li>
+            <li>Independently introduced <strong>automated UI testing</strong> into the release process — reducing undetected regressions before go-live and directly contributing to improved App Store ratings.</li>
+            <li>Contributed to the <strong>Docutain SDK</strong> — a B2B solution enabling companies to integrate document scanning, barcode recognition, and data extraction in under a day.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section fade-in d4">
+        <div class="sec-title">Projects</div>
+
+        <div class="proj-item">
+          <div class="proj-header">
+            <div class="proj-name">Cloud Infrastructure — Kubernetes on AWS &amp; Azure</div>
+            <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="proj-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <div class="proj-desc">Fully orchestrated Kubernetes environments on AWS and Azure — including CI/CD pipelines, monitoring stack, security hardening, and secrets management. Built independently end-to-end.</div>
+          <div class="proj-tags">
+            <span class="tag green">Kubernetes</span>
+            <span class="tag green">AWS EKS</span>
+            <span class="tag green">Azure AKS</span>
+            <span class="tag green">Terraform</span>
+            <span class="tag blue">GitHub Actions</span>
+            <span class="tag blue">Prometheus</span>
+            <span class="tag blue">Grafana</span>
+          </div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-header">
+            <div class="proj-name">Deutsch Learning Agent — Local AI Chatbot</div>
+            <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="proj-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <div class="proj-desc">Locally running AI chatbot powered by Mistral 7B via Ollama for German language learning through conversation. Fully containerised with Docker Compose, Streamlit frontend, web agent component — zero cloud dependency, zero API costs.</div>
+          <div class="proj-tags">
+            <span class="tag orange">Mistral 7B</span>
+            <span class="tag orange">Ollama</span>
+            <span class="tag orange">AI Agent</span>
+            <span class="tag green">Docker</span>
+            <span class="tag orange">Streamlit</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="cv-footer">
+    <span class="cv-footer-text">// Md Towfique Ahmmed · München, Germany · <span id="yr"></span></span>
+    <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+    <a href="https://github.com/AhmmedTow
