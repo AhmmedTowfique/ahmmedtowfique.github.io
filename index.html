@@ -45,7 +45,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .hd::before{content:'';position:absolute;top:0;right:0;width:320px;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(2,132,199,.08));pointer-events:none}
 .hd::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2),transparent)}
 
-.hd-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hd-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .hd-name-block{}
 .hd-name{font-family:'IBM Plex Mono',monospace;font-size:2.4rem;font-weight:700;color:#F8FAFC;letter-spacing:-1px;line-height:1.1;display:flex;align-items:center;gap:10px}
 .cursor{display:inline-block;width:3px;height:2.2rem;background:var(--accent);animation:blink 1.2s step-end infinite;vertical-align:middle;margin-left:2px}
@@ -58,6 +58,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .contact-row:hover{color:#F8FAFC}
 .contact-row svg{flex-shrink:0;opacity:.7}
 .contact-row span{font-family:'IBM Plex Mono',monospace;letter-spacing:.3px}
+
+/* ── LANGUAGE TOGGLE (sits just under email) ── */
+.lang-toggle{display:flex;gap:6px;margin-top:6px}
+.lang-btn{background:transparent;border:1px solid #334155;padding:4px 7px;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .18s ease;line-height:0}
+.lang-btn:hover{border-color:var(--accent);background:rgba(2,132,199,.08)}
+.lang-btn.active{background:rgba(2,132,199,.18);border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.lang-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang-btn svg.flag{display:block;width:24px;height:auto;border-radius:2px;box-shadow:0 0 0 .5px rgba(0,0,0,.15)}
 
 /* ── BODY ── */
 .body{display:grid;grid-template-columns:260px 1fr;min-height:600px}
@@ -138,15 +146,25 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
 /* ── PRINT STYLES ── */
+@page{size:A4;margin:0}
 @media print{
   .print-btn{display:none}
+  .lang-toggle{display:none}
   body{background:#fff;font-size:12px}
   .page{box-shadow:none;max-width:100%}
   .hd{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .sb{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .tag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .exp-date{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .proj-link{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cv-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* Force fade-in animated elements to be visible immediately when printing */
+  .fade-in{opacity:1 !important;transform:none !important;animation:none !important}
+  .cursor{display:none}
   .exp-item{break-inside:avoid}
   .proj-item{break-inside:avoid}
+  .exp-bullets li{break-inside:avoid}
+  .sb-section{break-inside:avoid}
 }
 
 /* ── RESPONSIVE ── */
@@ -155,6 +173,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   .sb{border-right:none;border-bottom:1px solid var(--border)}
   .hd-top{flex-direction:column;align-items:flex-start}
   .hd-contact{align-items:flex-start}
+  .lang-toggle{align-self:flex-start}
   .hd{padding:28px 24px}
   .main{padding:24px 20px}
 }
@@ -164,7 +183,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
 <button class="print-btn" onclick="window.print()">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-  Print / Save PDF
+  <span data-i18n="print.button">Print / Save PDF</span>
 </button>
 
 <div class="page">
@@ -176,11 +195,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="hd-name">
           Md Towfique Ahmmed<span class="cursor"></span>
         </div>
-        <div class="hd-title">// Cloud &amp; Backend Engineer · DevOps · Platform</div>
-        <div class="hd-location">📍 München, Germany</div>
+        <div class="hd-title" data-i18n="hd.title">// Cloud &amp; Backend Engineer · DevOps · Platform</div>
+        <div class="hd-location" data-i18n="hd.location">📍 München, Germany</div>
       </div>
       <div class="hd-contact fade-in d2">
-        
+
         <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="contact-row">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           <span>github.com/AhmmedTowfique</span>
@@ -189,6 +208,34 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           <span>linkedin.com/in/ahmmedtowfique</span>
         </a>
+        <a href="mailto:ahmmed.towfique@gmail.com" class="contact-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>ahmmed.towfique@gmail.com</span>
+        </a>
+
+        <!-- ── LANGUAGE TOGGLE ── -->
+        <div class="lang-toggle" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn" data-lang="en" aria-label="Switch to English" title="English">
+            <svg class="flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" aria-hidden="true">
+              <clipPath id="uk-clip">
+                <path d="M30,15 h30 v15 z v-30 h-30 z h-30 v-15 z v30 h30 z"/>
+              </clipPath>
+              <path fill="#012169" d="M0,0 v30 h60 V0 z"/>
+              <path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/>
+              <path stroke="#C8102E" stroke-width="4" clip-path="url(#uk-clip)" d="M0,0 L60,30 M60,0 L0,30"/>
+              <path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/>
+              <path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/>
+            </svg>
+          </button>
+          <button type="button" class="lang-btn" data-lang="de" aria-label="Zu Deutsch wechseln" title="Deutsch">
+            <svg class="flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 3" aria-hidden="true">
+              <rect width="5" height="1" y="0" fill="#000"/>
+              <rect width="5" height="1" y="1" fill="#DD0000"/>
+              <rect width="5" height="1" y="2" fill="#FFCE00"/>
+            </svg>
+          </button>
+        </div>
+
       </div>
     </div>
   </header>
@@ -201,10 +248,10 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
       <!-- SKILLS -->
       <div class="sb-section fade-in d3">
-        <div class="sb-title">Skills</div>
+        <div class="sb-title" data-i18n="sb.skills">Skills</div>
 
         <div class="skill-group">
-          <div class="skill-group-label">Cloud & Infra</div>
+          <div class="skill-group-label" data-i18n="skills.cloud">Cloud &amp; Infra</div>
           <div class="tags">
             <span class="tag green">AWS EKS</span>
             <span class="tag green">Azure AKS</span>
@@ -223,7 +270,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">CI/CD & Monitoring</div>
+          <div class="skill-group-label" data-i18n="skills.cicd">CI/CD &amp; Monitoring</div>
           <div class="tags">
             <span class="tag blue">GitHub Actions</span>
             <span class="tag blue">Jenkins</span>
@@ -237,7 +284,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">Languages & Scripting</div>
+          <div class="skill-group-label" data-i18n="skills.scripting">Languages &amp; Scripting</div>
           <div class="tags">
             <span class="tag gray">Python</span>
             <span class="tag gray">Bash/Shell</span>
@@ -248,7 +295,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">Databases</div>
+          <div class="skill-group-label" data-i18n="skills.databases">Databases</div>
           <div class="tags">
             <span class="tag purple">PostgreSQL</span>
             <span class="tag purple">Redis</span>
@@ -259,7 +306,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">AI & LLM</div>
+          <div class="skill-group-label" data-i18n="skills.ai">AI &amp; LLM</div>
           <div class="tags">
             <span class="tag orange">Ollama</span>
             <span class="tag orange">Mistral 7B</span>
@@ -271,7 +318,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">Tooling</div>
+          <div class="skill-group-label" data-i18n="skills.tooling">Tooling</div>
           <div class="tags">
             <span class="tag gray">Git</span>
             <span class="tag gray">Mercurial</span>
@@ -283,32 +330,32 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
       <!-- LANGUAGES -->
       <div class="sb-section fade-in d4">
-        <div class="sb-title">Languages</div>
-        <div class="lang-row"><span class="lang-name">German</span><span class="lang-level">B1 - B2</span></div>
-        <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
-        <div class="lang-row"><span class="lang-name">Hindi</span><span class="lang-level">Fluent</span></div>
-        <div class="lang-row"><span class="lang-name">Bengali</span><span class="lang-level">Native</span></div>
+        <div class="sb-title" data-i18n="sb.languages">Languages</div>
+        <div class="lang-row"><span class="lang-name" data-i18n="lang.german">German</span><span class="lang-level" data-i18n="lang.b1b2">B1 - B2</span></div>
+        <div class="lang-row"><span class="lang-name" data-i18n="lang.english">English</span><span class="lang-level" data-i18n="lang.fluent">Fluent</span></div>
+        <div class="lang-row"><span class="lang-name" data-i18n="lang.hindi">Hindi</span><span class="lang-level" data-i18n="lang.fluent">Fluent</span></div>
+        <div class="lang-row"><span class="lang-name" data-i18n="lang.bengali">Bengali</span><span class="lang-level" data-i18n="lang.native">Native</span></div>
       </div>
 
       <!-- EDUCATION -->
       <div class="sb-section fade-in d5">
-        <div class="sb-title">Education</div>
+        <div class="sb-title" data-i18n="sb.education">Education</div>
         <div class="edu-item">
-          <div class="edu-deg">M.Eng. Information Technology</div>
-          <div class="edu-school">Frankfurt University of Applied Sciences, Germany</div>
+          <div class="edu-deg" data-i18n="edu.meng">M.Eng. Information Technology</div>
+          <div class="edu-school" data-i18n="edu.fra">Frankfurt University of Applied Sciences, Germany</div>
           <div class="edu-year">2016</div>
         </div>
         <div class="edu-item">
-          <div class="edu-deg">B.Sc. Information & Communication Engineering</div>
-          <div class="edu-school">East-West University, Dhaka, Bangladesh</div>
+          <div class="edu-deg" data-i18n="edu.bsc">B.Sc. Information &amp; Communication Engineering</div>
+          <div class="edu-school" data-i18n="edu.ewu">East-West University, Dhaka, Bangladesh</div>
           <div class="edu-year">2011</div>
         </div>
       </div>
 
       <!-- EXTRAS -->
       <div class="sb-section fade-in d6">
-        <div class="sb-title">Additional</div>
-        <div style="font-size:.78rem;color:var(--muted);line-height:1.6">
+        <div class="sb-title" data-i18n="sb.additional">Additional</div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.6" data-i18n="extra.license">
           🚗 Valid Class B Driver's License
         </div>
       </div>
@@ -320,69 +367,69 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
       <!-- EXPERIENCE -->
       <div class="section fade-in d3">
-        <div class="sec-title">Work Experience</div>
+        <div class="sec-title" data-i18n="sec.experience">Work Experience</div>
 
         <!-- Job 1 -->
         <div class="exp-item">
           <div class="exp-header">
-            <div class="exp-role">Cloud &amp; Backend Engineer</div>
-            <div class="exp-date">Jan 2026 — present</div>
+            <div class="exp-role" data-i18n="job1.role">Cloud &amp; Backend Engineer</div>
+            <div class="exp-date" data-i18n="job1.date">Jan 2026 — present</div>
           </div>
-          <div class="exp-company">Megacom EDV-Lösungen GmbH · Munich</div>
-          <div class="exp-context">Leading the architectural transformation of BDBWin — a 30-year-old core ERP system serving 3,000+ users in the German-speaking building materials and timber trade.</div>
+          <div class="exp-company" data-i18n="job1.company">Megacom EDV-Lösungen GmbH · Munich</div>
+          <div class="exp-context" data-i18n="job1.context">Leading the architectural transformation of BDBWin — a 30-year-old core ERP system serving 3,000+ users in the German-speaking building materials and timber trade.</div>
           <ul class="exp-bullets">
-            <li>Driving force in <strong>architecture decisions, risk assessment, and migration roadmap</strong> for a complete technical transformation at production scale.</li>
-            <li>Leading migration from proprietary <strong>ISAM → PostgreSQL</strong> — replacing a data layer untouched for two decades while maintaining live operations for 100–150 active business customers.</li>
-            <li>Defining <strong>budget frameworks, API interface strategy, and cloud-native architecture principles</strong> ahead of first production rollout (AWS / Azure).</li>
-            <li>Developing the technical backbone for <strong>BDBWin AI</strong> — next-gen ERP with AI-powered features — through clean API abstraction, modular database layer, and cloud-native design.</li>
+            <li data-i18n-html="job1.b1">Driving force in <strong>architecture decisions, risk assessment, and migration roadmap</strong> for a complete technical transformation at production scale.</li>
+            <li data-i18n-html="job1.b2">Leading migration from proprietary <strong>ISAM → PostgreSQL</strong> — replacing a data layer untouched for two decades while maintaining live operations for 100–150 active business customers.</li>
+            <li data-i18n-html="job1.b3">Defining <strong>budget frameworks, API interface strategy, and cloud-native architecture principles</strong> ahead of first production rollout (AWS / Azure).</li>
+            <li data-i18n-html="job1.b4">Developing the technical backbone for <strong>BDBWin AI</strong> — next-gen ERP with AI-powered features — through clean API abstraction, modular database layer, and cloud-native design.</li>
           </ul>
         </div>
 
         <!-- Job 2 -->
         <div class="exp-item">
           <div class="exp-header">
-            <div class="exp-role">Software Developer</div>
-            <div class="exp-date">Sep 2021 — Feb 2025</div>
+            <div class="exp-role" data-i18n="job2.role">Software Developer</div>
+            <div class="exp-date" data-i18n="job2.date">Sep 2021 — Feb 2025</div>
           </div>
-          <div class="exp-company">Mentz GmbH · Munich</div>
-          <div class="exp-context">Critical digital infrastructure across five continents, serving millions of passengers daily. Took on DevOps and cloud ownership proactively alongside the core developer role.</div>
+          <div class="exp-company" data-i18n="job2.company">Mentz GmbH · Munich</div>
+          <div class="exp-context" data-i18n="job2.context">Critical digital infrastructure across five continents, serving millions of passengers daily. Took on DevOps and cloud ownership proactively alongside the core developer role.</div>
           <ul class="exp-bullets">
-            <li>Identified and solved a systematic bottleneck in the release pipeline of a multi-client architecture — independently designed and implemented full automation. Result: <strong>30% reduction in pipeline runtime.</strong></li>
-            <li>Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — any production incident had direct real-world impact on millions of passengers.</li>
-            <li>Identified approaching end-of-life of the mobile platform early — owned the complete migration decision and implementation. Result: <strong>25% faster development cycles.</strong></li>
-            <li>Initiated and designed the company's <strong>first cloud infrastructure</strong> — all design decisions on high availability, secrets management, pipeline automation, and budget control through to production-ready testing.</li>
+            <li data-i18n-html="job2.b1">Identified and solved a systematic bottleneck in the release pipeline of a multi-client architecture — independently designed and implemented full automation. Result: <strong>30% reduction in pipeline runtime.</strong></li>
+            <li data-i18n-html="job2.b2">Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — any production incident had direct real-world impact on millions of passengers.</li>
+            <li data-i18n-html="job2.b3">Identified approaching end-of-life of the mobile platform early — owned the complete migration decision and implementation. Result: <strong>25% faster development cycles.</strong></li>
+            <li data-i18n-html="job2.b4">Initiated and designed the company's <strong>first cloud infrastructure</strong> — all design decisions on high availability, secrets management, pipeline automation, and budget control through to production-ready testing.</li>
           </ul>
         </div>
 
         <!-- Job 3 -->
         <div class="exp-item">
           <div class="exp-header">
-            <div class="exp-role">App Developer</div>
-            <div class="exp-date">Apr 2017 — Aug 2021</div>
+            <div class="exp-role" data-i18n="job3.role">App Developer</div>
+            <div class="exp-date" data-i18n="job3.date">Apr 2017 — Aug 2021</div>
           </div>
-          <div class="exp-company">INFOSOFT GmbH · Koblenz</div>
-          <div class="exp-context">Docutain — a multiple award-winning document scanner app used by several million users worldwide.</div>
+          <div class="exp-company" data-i18n="job3.company">INFOSOFT GmbH · Koblenz</div>
+          <div class="exp-context" data-i18n="job3.context">Docutain — a multiple award-winning document scanner app used by several million users worldwide.</div>
           <ul class="exp-bullets">
-            <li>Developed and optimised features for Docutain across <strong>Android and iOS</strong> — focusing on performance, stability, and user experience at millions-of-users scale.</li>
-            <li>Independently introduced <strong>automated UI testing</strong> into the release process — reducing undetected regressions before go-live and directly contributing to improved App Store ratings.</li>
-            <li>Contributed to the <strong>Docutain SDK</strong> — a B2B solution enabling companies to integrate document scanning, barcode recognition, and data extraction in under a day.</li>
+            <li data-i18n-html="job3.b1">Developed and optimised features for Docutain across <strong>Android and iOS</strong> — focusing on performance, stability, and user experience at millions-of-users scale.</li>
+            <li data-i18n-html="job3.b2">Independently introduced <strong>automated UI testing</strong> into the release process — reducing undetected regressions before go-live and directly contributing to improved App Store ratings.</li>
+            <li data-i18n-html="job3.b3">Contributed to the <strong>Docutain SDK</strong> — a B2B solution enabling companies to integrate document scanning, barcode recognition, and data extraction in under a day.</li>
           </ul>
         </div>
       </div>
 
       <!-- PROJECTS -->
       <div class="section fade-in d4">
-        <div class="sec-title">Projects</div>
+        <div class="sec-title" data-i18n="sec.projects">Projects</div>
 
         <div class="proj-item">
           <div class="proj-header">
-            <div class="proj-name">Cloud Infrastructure — Kubernetes on AWS &amp; Azure</div>
+            <div class="proj-name" data-i18n="proj1.name">Cloud Infrastructure — Kubernetes on AWS &amp; Azure</div>
             <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="proj-link">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               GitHub
             </a>
           </div>
-          <div class="proj-desc">Fully orchestrated Kubernetes environments on AWS and Azure — including CI/CD pipelines, monitoring stack, security hardening, and secrets management. Built independently end-to-end.</div>
+          <div class="proj-desc" data-i18n="proj1.desc">Fully orchestrated Kubernetes environments on AWS and Azure — including CI/CD pipelines, monitoring stack, security hardening, and secrets management. Built independently end-to-end.</div>
           <div class="proj-tags">
             <span class="tag green">Kubernetes</span>
             <span class="tag green">AWS EKS</span>
@@ -396,13 +443,13 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
         <div class="proj-item">
           <div class="proj-header">
-            <div class="proj-name">Deutsch Learning Agent — Local AI Chatbot</div>
+            <div class="proj-name" data-i18n="proj2.name">Deutsch Learning Agent — Local AI Chatbot</div>
             <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="proj-link">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               GitHub
             </a>
           </div>
-          <div class="proj-desc">Locally running AI chatbot powered by Mistral 7B via Ollama for German language learning through conversation. Fully containerised with Docker Compose, Streamlit frontend, web agent component — zero cloud dependency, zero API costs.</div>
+          <div class="proj-desc" data-i18n="proj2.desc">Locally running AI chatbot powered by Mistral 7B via Ollama for German language learning through conversation. Fully containerised with Docker Compose, Streamlit frontend, web agent component — zero cloud dependency, zero API costs.</div>
           <div class="proj-tags">
             <span class="tag orange">Mistral 7B</span>
             <span class="tag orange">Ollama</span>
@@ -418,6 +465,236 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
   <!-- FOOTER -->
   <footer class="cv-footer">
-    <span class="cv-footer-text">// Md Towfique Ahmmed · München, Germany · <span id="yr"></span></span>
-    <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
-    <a href="https://github.com/AhmmedTow
+    <span class="cv-footer-text">// Md Towfique Ahmmed · <span data-i18n="footer.location">Munich, Germany</span> · <span id="yr"></span></span>
+    <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="cv-footer-link" data-i18n="footer.source">// Source on GitHub</a>
+  </footer>
+
+</div>
+
+<!-- ─────────────────────────────────────────────────────────────
+     i18n: translations + switching logic
+     - default: navigator.language (de → DE, else → EN)
+     - persistence: localStorage key "cv-lang"
+     - updates <html lang>, document.title, all [data-i18n] and
+       [data-i18n-html] nodes
+───────────────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  const translations = {
+    en: {
+      'page.title': 'Md Towfique Ahmmed — Cloud & Backend Engineer',
+      'print.button': 'Print / Save PDF',
+
+      'hd.title': '// Cloud & Backend Engineer · DevOps · Platform',
+      'hd.location': '📍 Munich, Germany',
+
+      'sb.skills': 'Skills',
+      'sb.languages': 'Languages',
+      'sb.education': 'Education',
+      'sb.additional': 'Additional',
+
+      'skills.cloud': 'Cloud & Infra',
+      'skills.cicd': 'CI/CD & Monitoring',
+      'skills.scripting': 'Languages & Scripting',
+      'skills.databases': 'Databases',
+      'skills.ai': 'AI & LLM',
+      'skills.tooling': 'Tooling',
+
+      'lang.german': 'German',
+      'lang.english': 'English',
+      'lang.hindi': 'Hindi',
+      'lang.bengali': 'Bengali',
+      'lang.b1b2': 'B1 - B2',
+      'lang.fluent': 'Fluent',
+      'lang.native': 'Native',
+
+      'edu.meng': 'M.Eng. Information Technology',
+      'edu.fra': 'Frankfurt University of Applied Sciences, Germany',
+      'edu.bsc': 'B.Sc. Information & Communication Engineering',
+      'edu.ewu': 'East-West University, Dhaka, Bangladesh',
+
+      'extra.license': "🚗 Valid Class B Driver's License",
+
+      'sec.experience': 'Work Experience',
+      'sec.projects': 'Projects',
+
+      // Job 1
+      'job1.role': 'Cloud & Backend Engineer',
+      'job1.date': 'Jan 2026 — present',
+      'job1.company': 'Megacom EDV-Lösungen GmbH · Munich',
+      'job1.context': 'Leading the architectural transformation of BDBWin — a 30-year-old core ERP system serving 3,000+ users in the German-speaking building materials and timber trade.',
+      'job1.b1': 'Driving force in <strong>architecture decisions, risk assessment, and migration roadmap</strong> for a complete technical transformation at production scale.',
+      'job1.b2': 'Leading migration from proprietary <strong>ISAM → PostgreSQL</strong> — replacing a data layer untouched for two decades while maintaining live operations for 100–150 active business customers.',
+      'job1.b3': 'Defining <strong>budget frameworks, API interface strategy, and cloud-native architecture principles</strong> ahead of first production rollout (AWS / Azure).',
+      'job1.b4': 'Developing the technical backbone for <strong>BDBWin AI</strong> — next-gen ERP with AI-powered features — through clean API abstraction, modular database layer, and cloud-native design.',
+
+      // Job 2
+      'job2.role': 'Software Developer',
+      'job2.date': 'Sep 2021 — Feb 2025',
+      'job2.company': 'Mentz GmbH · Munich',
+      'job2.context': 'Critical digital infrastructure across five continents, serving millions of passengers daily. Took on DevOps and cloud ownership proactively alongside the core developer role.',
+      'job2.b1': 'Identified and solved a systematic bottleneck in the release pipeline of a multi-client architecture — independently designed and implemented full automation. Result: <strong>30% reduction in pipeline runtime.</strong>',
+      'job2.b2': 'Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — any production incident had direct real-world impact on millions of passengers.',
+      'job2.b3': 'Identified approaching end-of-life of the mobile platform early — owned the complete migration decision and implementation. Result: <strong>25% faster development cycles.</strong>',
+      'job2.b4': "Initiated and designed the company's <strong>first cloud infrastructure</strong> — all design decisions on high availability, secrets management, pipeline automation, and budget control through to production-ready testing.",
+
+      // Job 3
+      'job3.role': 'App Developer',
+      'job3.date': 'Apr 2017 — Aug 2021',
+      'job3.company': 'INFOSOFT GmbH · Koblenz',
+      'job3.context': 'Docutain — a multiple award-winning document scanner app used by several million users worldwide.',
+      'job3.b1': 'Developed and optimised features for Docutain across <strong>Android and iOS</strong> — focusing on performance, stability, and user experience at millions-of-users scale.',
+      'job3.b2': 'Independently introduced <strong>automated UI testing</strong> into the release process — reducing undetected regressions before go-live and directly contributing to improved App Store ratings.',
+      'job3.b3': 'Contributed to the <strong>Docutain SDK</strong> — a B2B solution enabling companies to integrate document scanning, barcode recognition, and data extraction in under a day.',
+
+      // Projects
+      'proj1.name': 'Cloud Infrastructure — Kubernetes on AWS & Azure',
+      'proj1.desc': 'Fully orchestrated Kubernetes environments on AWS and Azure — including CI/CD pipelines, monitoring stack, security hardening, and secrets management. Built independently end-to-end.',
+      'proj2.name': 'Deutsch Learning Agent — Local AI Chatbot',
+      'proj2.desc': 'Locally running AI chatbot powered by Mistral 7B via Ollama for German language learning through conversation. Fully containerised with Docker Compose, Streamlit frontend, web agent component — zero cloud dependency, zero API costs.',
+
+      'footer.location': 'Munich, Germany',
+      'footer.source': '// Source on GitHub'
+    },
+
+    de: {
+      'page.title': 'Md Towfique Ahmmed — Cloud & Backend Engineer',
+      'print.button': 'Drucken / als PDF speichern',
+
+      'hd.title': '// Cloud & Backend Engineer · DevOps · Platform',
+      'hd.location': '📍 München, Deutschland',
+
+      'sb.skills': 'Fähigkeiten',
+      'sb.languages': 'Sprachen',
+      'sb.education': 'Ausbildung',
+      'sb.additional': 'Sonstiges',
+
+      'skills.cloud': 'Cloud & Infrastruktur',
+      'skills.cicd': 'CI/CD & Monitoring',
+      'skills.scripting': 'Programmierung & Skripting',
+      'skills.databases': 'Datenbanken',
+      'skills.ai': 'KI & LLM',
+      'skills.tooling': 'Weitere Tools',
+
+      'lang.german': 'Deutsch',
+      'lang.english': 'Englisch',
+      'lang.hindi': 'Hindi',
+      'lang.bengali': 'Bengali',
+      'lang.b1b2': 'B1 - B2',
+      'lang.fluent': 'Fließend',
+      'lang.native': 'Muttersprache',
+
+      'edu.meng': 'M.Eng. Informationstechnik',
+      'edu.fra': 'Frankfurt University of Applied Sciences, Deutschland',
+      'edu.bsc': 'B.Sc. Informations- und Kommunikationstechnik',
+      'edu.ewu': 'East-West University, Dhaka, Bangladesch',
+
+      'extra.license': '🚗 Führerschein Klasse B vorhanden',
+
+      'sec.experience': 'Berufserfahrung',
+      'sec.projects': 'Projekte',
+
+      // Job 1
+      'job1.role': 'Cloud & Backend Engineer',
+      'job1.date': 'Jan 2026 — heute',
+      'job1.company': 'Megacom EDV-Lösungen GmbH · München',
+      'job1.context': 'Verantworte die vollständige technische Transformation des 30 Jahre alten ERP-Kernsystems BDBWin, das von über 3.000 Anwendern im deutschsprachigen Baustoff- und Holzfachhandel genutzt wird.',
+      'job1.b1': 'Treibende Kraft bei <strong>Architekturentscheidungen, Risikobewertung und Migrationsroadmap</strong> für eine vollständige technische Transformation im Produktivbetrieb.',
+      'job1.b2': 'Treibe die Migration von der proprietären <strong>ISAM → PostgreSQL</strong> voran — Ablösung einer Datenschicht, die seit über zwei Jahrzehnten nicht erneuert wurde, bei laufendem Produktivbetrieb mit 100–150 aktiven Geschäftskunden.',
+      'job1.b3': 'Definiere <strong>Budgetrahmen, API-Schnittstellenstrategie und Cloud-native Architekturprinzipien</strong> vor dem ersten produktiven Rollout (AWS / Azure).',
+      'job1.b4': 'Entwickle das technische Rückgrat für <strong>BDBWin KI</strong> — die nächste Produktgeneration mit KI-gestützten ERP-Funktionen — durch saubere API-Abstraktion, modulare Datenbankschicht und Cloud-native Architekturprinzipien.',
+
+      // Job 2
+      'job2.role': 'Software Entwickler',
+      'job2.date': 'Sep 2021 — Feb 2025',
+      'job2.company': 'Mentz GmbH · München',
+      'job2.context': 'Kritische digitale Infrastruktur auf fünf Kontinenten, täglich von Millionen Fahrgästen genutzt. DevOps- und Cloud-Verantwortung eigenständig und freiwillig übernommen — zusätzlich zur Kerntätigkeit als Softwareentwickler.',
+      'job2.b1': 'Erkannte einen systematischen Engpass im Release-Prozess einer Multi-Client-Architektur — entwarf und implementierte die vollständige Automatisierungslösung eigenständig. Ergebnis: <strong>30% kürzere Pipeline-Laufzeit.</strong>',
+      'job2.b2': 'Mitverantwortlich für die Release-Stabilität einer Plattform, die <strong>Verkehrsnetze auf fünf Kontinenten</strong> versorgt — jede Produktionsstörung hätte direkte reale Auswirkungen auf Millionen Fahrgäste gehabt.',
+      'job2.b3': 'Erkannte frühzeitig das bevorstehende End-of-Life der mobilen Plattform — traf die strategische Migrationsentscheidung und verantwortete die vollständige Umsetzung. Ergebnis: <strong>25% schnellere Entwicklungszyklen.</strong>',
+      'job2.b4': 'Initiierte und entwarf die <strong>erste Cloud-Infrastruktur</strong> des Unternehmens — alle Designentscheidungen zu Hochverfügbarkeit, Secrets-Management, Pipeline-Automatisierung und Budgetsteuerung bis zur produktionsreifen Testphase.',
+
+      // Job 3
+      'job3.role': 'App-Entwickler',
+      'job3.date': 'Apr 2017 — Aug 2021',
+      'job3.company': 'INFOSOFT GmbH · Koblenz',
+      'job3.context': 'Docutain — mehrfach ausgezeichnete Dokumenten-Scanner-App, genutzt von mehreren Millionen Nutzern weltweit.',
+      'job3.b1': 'Entwickelte und optimierte Features für Docutain auf <strong>Android und iOS</strong> — mit Fokus auf Performance, Stabilität und Nutzererfahrung bei mehreren Millionen aktiven Nutzern.',
+      'job3.b2': 'Führte <strong>automatisierte UI-Tests</strong> eigenständig in den Release-Prozess ein — reduzierte unentdeckte Regressionen vor dem Go-Live und trug direkt zur Verbesserung der App-Store-Bewertungen bei.',
+      'job3.b3': 'Trug zur Weiterentwicklung des <strong>Docutain SDK</strong> bei — einer B2B-Lösung, die Unternehmen ermöglicht, Dokumentenscanning, Barcode-Erkennung und Datenextraktion in weniger als einem Tag in eigene Apps zu integrieren.',
+
+      // Projects
+      'proj1.name': 'Cloud-Infrastruktur — Kubernetes auf AWS & Azure',
+      'proj1.desc': 'Vollständig orchestrierte Kubernetes-Umgebungen auf AWS und Azure — inkl. CI/CD-Pipelines, Monitoring-Stack, Security-Hardening und Secrets-Management. Eigenständig entwickelt — Ende zu Ende.',
+      'proj2.name': 'Deutsch Learning Agent — Lokaler KI-Chatbot',
+      'proj2.desc': 'Lokal laufender KI-Chatbot auf Basis von Mistral 7B (Ollama) zum Deutschlernen via Konversation. Vollständig containerisiert mit Docker Compose, Streamlit-Frontend, inkl. Web-Agent-Komponente — ohne Cloud-Abhängigkeit oder API-Kosten.',
+
+      'footer.location': 'München, Deutschland',
+      'footer.source': '// Quellcode auf GitHub'
+    }
+  };
+
+  const STORAGE_KEY = 'cv-lang';
+  const SUPPORTED = ['en', 'de'];
+
+  function detectLang() {
+    // 1) saved choice wins
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && SUPPORTED.includes(saved)) return saved;
+    } catch (e) { /* localStorage may be blocked — fall through */ }
+
+    // 2) browser language
+    const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    return nav.startsWith('de') ? 'de' : 'en';
+  }
+
+  function applyLang(lang) {
+    if (!SUPPORTED.includes(lang)) lang = 'en';
+    const dict = translations[lang];
+
+    // <html lang> + <title>
+    document.documentElement.lang = lang;
+    if (dict['page.title']) document.title = dict['page.title'];
+
+    // textContent swap
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] != null) el.textContent = dict[key];
+    });
+
+    // innerHTML swap (for bullets containing <strong>)
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+
+    // Toggle button states
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      const isActive = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+
+    // Persist
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignore */ }
+  }
+
+  // Wire up buttons
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyLang(btn.getAttribute('data-lang'));
+    });
+  });
+
+  // Footer year
+  const yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // Initial apply
+  applyLang(detectLang());
+})();
+</script>
+
+</body>
+</html>
