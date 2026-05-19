@@ -153,7 +153,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   body{background:#fff;font-size:12px}
   .page{box-shadow:none;max-width:100%}
   .hd{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .sb{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sb{-webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .main{-webkit-box-decoration-break:clone;box-decoration-break:clone}
   .tag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .exp-date{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .proj-link{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -251,30 +252,63 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="sb-title" data-i18n="sb.skills">Skills</div>
 
         <div class="skill-group">
-          <div class="skill-group-label" data-i18n="skills.cloud">Cloud &amp; Infra</div>
+          <div class="skill-group-label" data-i18n="skills.scripting">Programming &amp; Scripting</div>
           <div class="tags">
-            <span class="tag green">AWS EKS</span>
-            <span class="tag green">Azure AKS</span>
+            <span class="tag gray">Python</span>
+            <span class="tag gray">Bash/Shell</span>
+            <span class="tag gray">PowerShell</span>
+            <span class="tag gray">C# (.NET/Xamarin)</span>
+            <span class="tag gray">Dart (Flutter)</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label" data-i18n="skills.cloud">DevOps &amp; Cloud Technologies</div>
+          <div class="tags">
             <span class="tag green">Terraform</span>
+            <span class="tag green">Docker</span>
             <span class="tag green">Kubernetes</span>
             <span class="tag green">Helm</span>
             <span class="tag green">Argo CD</span>
-            <span class="tag green">Docker</span>
             <span class="tag green">Ansible</span>
             <span class="tag green">Nginx</span>
+            <span class="tag green">Ingress</span>
             <span class="tag green">RBAC</span>
             <span class="tag green">VPCs</span>
+            <span class="tag green">AWS (EKS)</span>
+            <span class="tag green">Azure (AKS)</span>
             <span class="tag green">VMware</span>
             <span class="tag green">Hyper-V</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label" data-i18n="skills.cicd">CI/CD &amp; Monitoring</div>
+          <div class="skill-group-label" data-i18n="skills.ai">AI &amp; LLM</div>
+          <div class="tags">
+            <span class="tag orange">Ollama</span>
+            <span class="tag orange">Mistral 7B</span>
+            <span class="tag orange">Prompt Engineering</span>
+            <span class="tag orange" data-i18n="tag.llm_local">LLM Integration (local)</span>
+            <span class="tag orange">Streamlit</span>
+            <span class="tag orange">AI Agent Design</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label" data-i18n="skills.cicd">CI/CD &amp; Testing</div>
           <div class="tags">
             <span class="tag blue">GitHub Actions</span>
             <span class="tag blue">Jenkins</span>
             <span class="tag blue">SonarQube</span>
+            <span class="tag blue" data-i18n="tag.cicd_pipes">CI/CD Pipelines</span>
+            <span class="tag blue" data-i18n="tag.test_auto">Test Automation</span>
+            <span class="tag blue" data-i18n="tag.load_test">Load Testing</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label" data-i18n="skills.monitoring">Monitoring &amp; Logging</div>
+          <div class="tags">
             <span class="tag blue">Prometheus</span>
             <span class="tag blue">Grafana</span>
             <span class="tag blue">Loki</span>
@@ -284,44 +318,27 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label" data-i18n="skills.scripting">Languages &amp; Scripting</div>
-          <div class="tags">
-            <span class="tag gray">Python</span>
-            <span class="tag gray">Bash/Shell</span>
-            <span class="tag gray">PowerShell</span>
-            <span class="tag gray">C# (.NET)</span>
-            <span class="tag gray">Dart/Flutter</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
           <div class="skill-group-label" data-i18n="skills.databases">Databases</div>
           <div class="tags">
             <span class="tag purple">PostgreSQL</span>
             <span class="tag purple">Redis</span>
-            <span class="tag purple">MongoDB</span>
             <span class="tag purple">SQLite</span>
+            <span class="tag purple">MongoDB</span>
             <span class="tag purple">ISAM</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label" data-i18n="skills.ai">AI &amp; LLM</div>
+          <div class="skill-group-label" data-i18n="skills.versioncontrol">Version Control</div>
           <div class="tags">
-            <span class="tag orange">Ollama</span>
-            <span class="tag orange">Mistral 7B</span>
-            <span class="tag orange">LLM Integration</span>
-            <span class="tag orange">AI Agent Design</span>
-            <span class="tag orange">Prompt Engineering</span>
-            <span class="tag orange">Streamlit</span>
+            <span class="tag gray">Git</span>
+            <span class="tag gray">Mercurial</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label" data-i18n="skills.tooling">Tooling</div>
+          <div class="skill-group-label" data-i18n="skills.tooling">Other Tools</div>
           <div class="tags">
-            <span class="tag gray">Git</span>
-            <span class="tag gray">Mercurial</span>
             <span class="tag gray">Jira</span>
             <span class="tag gray">Confluence</span>
           </div>
@@ -341,12 +358,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="sb-section fade-in d5">
         <div class="sb-title" data-i18n="sb.education">Education</div>
         <div class="edu-item">
-          <div class="edu-deg" data-i18n="edu.meng">M.Eng. Information Technology</div>
-          <div class="edu-school" data-i18n="edu.fra">Frankfurt University of Applied Sciences, Germany</div>
+          <div class="edu-deg" data-i18n="edu.meng">Master of Engineering – Information Technology</div>
+          <div class="edu-school" data-i18n="edu.fra">Frankfurt University of Applied Sciences, Frankfurt am Main, Germany</div>
           <div class="edu-year">2016</div>
         </div>
         <div class="edu-item">
-          <div class="edu-deg" data-i18n="edu.bsc">B.Sc. Information &amp; Communication Engineering</div>
+          <div class="edu-deg" data-i18n="edu.bsc">Bachelor of Science – Information and Communication Engineering</div>
           <div class="edu-school" data-i18n="edu.ewu">East-West University, Dhaka, Bangladesh</div>
           <div class="edu-year">2011</div>
         </div>
@@ -354,7 +371,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
       <!-- EXTRAS -->
       <div class="sb-section fade-in d6">
-        <div class="sb-title" data-i18n="sb.additional">Additional</div>
+        <div class="sb-title" data-i18n="sb.additional">Mobility</div>
         <div style="font-size:.78rem;color:var(--muted);line-height:1.6" data-i18n="extra.license">
           🚗 Valid Class B Driver's License
         </div>
@@ -376,12 +393,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <div class="exp-date" data-i18n="job1.date">Jan 2026 — present</div>
           </div>
           <div class="exp-company" data-i18n="job1.company">Megacom EDV-Lösungen GmbH · Munich</div>
-          <div class="exp-context" data-i18n="job1.context">Leading the architectural transformation of BDBWin — a 30-year-old core ERP system serving 3,000+ users in the German-speaking building materials and timber trade.</div>
+          <div class="exp-context" data-i18n="job1.context">BDBWin — a 30-year-old core ERP system, used by over 3,000 users in the German-speaking building materials and timber trade.</div>
           <ul class="exp-bullets">
-            <li data-i18n-html="job1.b1">Driving force in <strong>architecture decisions, risk assessment, and migration roadmap</strong> for a complete technical transformation at production scale.</li>
-            <li data-i18n-html="job1.b2">Leading migration from proprietary <strong>ISAM → PostgreSQL</strong> — replacing a data layer untouched for two decades while maintaining live operations for 100–150 active business customers.</li>
-            <li data-i18n-html="job1.b3">Defining <strong>budget frameworks, API interface strategy, and cloud-native architecture principles</strong> ahead of first production rollout (AWS / Azure).</li>
-            <li data-i18n-html="job1.b4">Developing the technical backbone for <strong>BDBWin AI</strong> — next-gen ERP with AI-powered features — through clean API abstraction, modular database layer, and cloud-native design.</li>
+            <li data-i18n-html="job1.b1">Owning the <strong>complete technical transformation</strong> of a 30-year-old core ERP system (BDBWin), used by over 3,000 users in the German-speaking building materials and timber trade — driving force behind <strong>architecture decisions, risk assessment, and migration roadmap</strong>.</li>
+            <li data-i18n-html="job1.b2">Developing and driving the migration from a proprietary <strong>ISAM database architecture to PostgreSQL</strong> — replacing a data layer that has not been fundamentally renewed in over two decades, during live production operation with <strong>100–150 active business customers</strong>.</li>
+            <li data-i18n-html="job1.b3">Defining <strong>budget frameworks, architecture principles, and API interface strategy</strong> ahead of the first production rollout — target: highly available, scalable infrastructure based on modern cloud patterns (AWS/Azure).</li>
+            <li data-i18n-html="job1.b4">Developing the technical backbone for <strong>BDBWin AI</strong> — the next product generation with AI-powered ERP features — through clean API abstraction, a modular database layer, and cloud-native architecture principles.</li>
           </ul>
         </div>
 
@@ -392,12 +409,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <div class="exp-date" data-i18n="job2.date">Sep 2021 — Feb 2025</div>
           </div>
           <div class="exp-company" data-i18n="job2.company">Mentz GmbH · Munich</div>
-          <div class="exp-context" data-i18n="job2.context">Critical digital infrastructure across five continents, serving millions of passengers daily. Took on DevOps and cloud ownership proactively alongside the core developer role.</div>
+          <div class="exp-context" data-i18n="job2.context">Critical digital infrastructure. Five continents. Millions of passengers daily. DevOps and cloud responsibility taken on independently and proactively — in addition to the core role as software developer.</div>
           <ul class="exp-bullets">
-            <li data-i18n-html="job2.b1">Identified and solved a systematic bottleneck in the release pipeline of a multi-client architecture — independently designed and implemented full automation. Result: <strong>30% reduction in pipeline runtime.</strong></li>
-            <li data-i18n-html="job2.b2">Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — any production incident had direct real-world impact on millions of passengers.</li>
-            <li data-i18n-html="job2.b3">Identified approaching end-of-life of the mobile platform early — owned the complete migration decision and implementation. Result: <strong>25% faster development cycles.</strong></li>
-            <li data-i18n-html="job2.b4">Initiated and designed the company's <strong>first cloud infrastructure</strong> — all design decisions on high availability, secrets management, pipeline automation, and budget control through to production-ready testing.</li>
+            <li data-i18n-html="job2.b1">Identified a <strong>systematic bottleneck</strong> in the release process of a multi-client architecture — took ownership without waiting for approval, designed and implemented the complete automation solution independently. Result: <strong>30% shorter pipeline runtime</strong>.</li>
+            <li data-i18n-html="job2.b2">Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — every production incident would have had direct real-world impact on <strong>millions of passengers daily</strong>. Under that pressure, stable operation was not an option but a duty.</li>
+            <li data-i18n-html="job2.b3">Recognised the approaching <strong>End-of-Life</strong> of the mobile platform early — made the strategic decision to migrate and owned the complete implementation. Result: <strong>25% faster development cycles</strong>.</li>
+            <li data-i18n-html="job2.b4">Initiated and designed the company's <strong>first cloud infrastructure</strong> — made all design decisions on high availability, secrets management, pipeline automation, and budget control. Project led through to the production-ready testing phase.</li>
           </ul>
         </div>
 
@@ -407,11 +424,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <div class="exp-role" data-i18n="job3.role">App Developer</div>
             <div class="exp-date" data-i18n="job3.date">Apr 2017 — Aug 2021</div>
           </div>
-          <div class="exp-company" data-i18n="job3.company">INFOSOFT GmbH · Koblenz</div>
-          <div class="exp-context" data-i18n="job3.context">Docutain — a multiple award-winning document scanner app used by several million users worldwide.</div>
+          <div class="exp-company" data-i18n="job3.company">INFOSOFT Informations- und Dokumentationssysteme GmbH · Koblenz</div>
+          <div class="exp-context" data-i18n-html="job3.context"><a href="https://www.docutain.de/en/default" target="_blank" rel="noopener">Docutain</a> — a multiple award-winning document scanner app used by several million users worldwide.</div>
           <ul class="exp-bullets">
-            <li data-i18n-html="job3.b1">Developed and optimised features for Docutain across <strong>Android and iOS</strong> — focusing on performance, stability, and user experience at millions-of-users scale.</li>
-            <li data-i18n-html="job3.b2">Independently introduced <strong>automated UI testing</strong> into the release process — reducing undetected regressions before go-live and directly contributing to improved App Store ratings.</li>
+            <li data-i18n-html="job3.b1">Developed and optimised features for Docutain — a mobile application repeatedly awarded "Best Scanner App of the Year" with <strong>several million active users worldwide</strong> — focusing on performance, stability, and user experience on <strong>Android and iOS</strong>.</li>
+            <li data-i18n-html="job3.b2">Independently introduced <strong>automated UI testing</strong> into the release process — demonstrably reduced undetected regressions before go-live and directly contributed to improved App Store ratings.</li>
             <li data-i18n-html="job3.b3">Contributed to the <strong>Docutain SDK</strong> — a B2B solution enabling companies to integrate document scanning, barcode recognition, and data extraction in under a day.</li>
           </ul>
         </div>
@@ -423,13 +440,13 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
         <div class="proj-item">
           <div class="proj-header">
-            <div class="proj-name" data-i18n="proj1.name">Cloud Infrastructure — Kubernetes on AWS &amp; Azure</div>
+            <div class="proj-name" data-i18n="proj1.name">Self-developed Cloud Infrastructure Projects</div>
             <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="proj-link">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               GitHub
             </a>
           </div>
-          <div class="proj-desc" data-i18n="proj1.desc">Fully orchestrated Kubernetes environments on AWS and Azure — including CI/CD pipelines, monitoring stack, security hardening, and secrets management. Built independently end-to-end.</div>
+          <div class="proj-desc" data-i18n="proj1.desc">Fully orchestrated Kubernetes environments on AWS and Azure, including CI/CD, monitoring, security hardening, and secrets management.</div>
           <div class="proj-tags">
             <span class="tag green">Kubernetes</span>
             <span class="tag green">AWS EKS</span>
@@ -443,8 +460,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
         <div class="proj-item">
           <div class="proj-header">
-            <div class="proj-name" data-i18n="proj2.name">Deutsch Learning Agent — Local AI Chatbot</div>
-            <a href="https://github.com/AhmmedTowfique" target="_blank" rel="noopener" class="proj-link">
+            <div class="proj-name" data-i18n="proj2.name">Deutsch Learning Agent (Personal Project)</div>
+            <a href="https://github.com/AhmmedTowfique/german-language-chatbot" target="_blank" rel="noopener" class="proj-link">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               GitHub
             </a>
@@ -491,14 +508,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       'sb.skills': 'Skills',
       'sb.languages': 'Languages',
       'sb.education': 'Education',
-      'sb.additional': 'Additional',
+      'sb.additional': 'Mobility',
 
-      'skills.cloud': 'Cloud & Infra',
-      'skills.cicd': 'CI/CD & Monitoring',
-      'skills.scripting': 'Languages & Scripting',
-      'skills.databases': 'Databases',
+      'skills.scripting': 'Programming & Scripting',
+      'skills.cloud': 'DevOps & Cloud Technologies',
       'skills.ai': 'AI & LLM',
-      'skills.tooling': 'Tooling',
+      'skills.cicd': 'CI/CD & Testing',
+      'skills.monitoring': 'Monitoring & Logging',
+      'skills.databases': 'Databases',
+      'skills.versioncontrol': 'Version Control',
+      'skills.tooling': 'Other Tools',
+
+      'tag.llm_local': 'LLM Integration (local)',
+      'tag.cicd_pipes': 'CI/CD Pipelines',
+      'tag.test_auto': 'Test Automation',
+      'tag.load_test': 'Load Testing',
 
       'lang.german': 'German',
       'lang.english': 'English',
@@ -508,9 +532,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       'lang.fluent': 'Fluent',
       'lang.native': 'Native',
 
-      'edu.meng': 'M.Eng. Information Technology',
-      'edu.fra': 'Frankfurt University of Applied Sciences, Germany',
-      'edu.bsc': 'B.Sc. Information & Communication Engineering',
+      'edu.meng': 'Master of Engineering – Information Technology',
+      'edu.fra': 'Frankfurt University of Applied Sciences, Frankfurt am Main, Germany',
+      'edu.bsc': 'Bachelor of Science – Information and Communication Engineering',
       'edu.ewu': 'East-West University, Dhaka, Bangladesh',
 
       'extra.license': "🚗 Valid Class B Driver's License",
@@ -522,36 +546,36 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       'job1.role': 'Cloud & Backend Engineer',
       'job1.date': 'Jan 2026 — present',
       'job1.company': 'Megacom EDV-Lösungen GmbH · Munich',
-      'job1.context': 'Leading the architectural transformation of BDBWin — a 30-year-old core ERP system serving 3,000+ users in the German-speaking building materials and timber trade.',
-      'job1.b1': 'Driving force in <strong>architecture decisions, risk assessment, and migration roadmap</strong> for a complete technical transformation at production scale.',
-      'job1.b2': 'Leading migration from proprietary <strong>ISAM → PostgreSQL</strong> — replacing a data layer untouched for two decades while maintaining live operations for 100–150 active business customers.',
-      'job1.b3': 'Defining <strong>budget frameworks, API interface strategy, and cloud-native architecture principles</strong> ahead of first production rollout (AWS / Azure).',
-      'job1.b4': 'Developing the technical backbone for <strong>BDBWin AI</strong> — next-gen ERP with AI-powered features — through clean API abstraction, modular database layer, and cloud-native design.',
+      'job1.context': 'BDBWin — a 30-year-old core ERP system, used by over 3,000 users in the German-speaking building materials and timber trade.',
+      'job1.b1': 'Owning the <strong>complete technical transformation</strong> of a 30-year-old core ERP system (BDBWin), used by over 3,000 users in the German-speaking building materials and timber trade — driving force behind <strong>architecture decisions, risk assessment, and migration roadmap</strong>.',
+      'job1.b2': 'Developing and driving the migration from a proprietary <strong>ISAM database architecture to PostgreSQL</strong> — replacing a data layer that has not been fundamentally renewed in over two decades, during live production operation with <strong>100–150 active business customers</strong>.',
+      'job1.b3': 'Defining <strong>budget frameworks, architecture principles, and API interface strategy</strong> ahead of the first production rollout — target: highly available, scalable infrastructure based on modern cloud patterns (AWS/Azure).',
+      'job1.b4': 'Developing the technical backbone for <strong>BDBWin AI</strong> — the next product generation with AI-powered ERP features — through clean API abstraction, a modular database layer, and cloud-native architecture principles.',
 
       // Job 2
       'job2.role': 'Software Developer',
       'job2.date': 'Sep 2021 — Feb 2025',
       'job2.company': 'Mentz GmbH · Munich',
-      'job2.context': 'Critical digital infrastructure across five continents, serving millions of passengers daily. Took on DevOps and cloud ownership proactively alongside the core developer role.',
-      'job2.b1': 'Identified and solved a systematic bottleneck in the release pipeline of a multi-client architecture — independently designed and implemented full automation. Result: <strong>30% reduction in pipeline runtime.</strong>',
-      'job2.b2': 'Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — any production incident had direct real-world impact on millions of passengers.',
-      'job2.b3': 'Identified approaching end-of-life of the mobile platform early — owned the complete migration decision and implementation. Result: <strong>25% faster development cycles.</strong>',
-      'job2.b4': "Initiated and designed the company's <strong>first cloud infrastructure</strong> — all design decisions on high availability, secrets management, pipeline automation, and budget control through to production-ready testing.",
+      'job2.context': 'Critical digital infrastructure. Five continents. Millions of passengers daily. DevOps and cloud responsibility taken on independently and proactively — in addition to the core role as software developer.',
+      'job2.b1': 'Identified a <strong>systematic bottleneck</strong> in the release process of a multi-client architecture — took ownership without waiting for approval, designed and implemented the complete automation solution independently. Result: <strong>30% shorter pipeline runtime</strong>.',
+      'job2.b2': 'Co-responsible for release stability of a platform serving <strong>transit networks on five continents</strong> — every production incident would have had direct real-world impact on <strong>millions of passengers daily</strong>. Under that pressure, stable operation was not an option but a duty.',
+      'job2.b3': 'Recognised the approaching <strong>End-of-Life</strong> of the mobile platform early — made the strategic decision to migrate and owned the complete implementation. Result: <strong>25% faster development cycles</strong>.',
+      'job2.b4': "Initiated and designed the company's <strong>first cloud infrastructure</strong> — made all design decisions on high availability, secrets management, pipeline automation, and budget control. Project led through to the production-ready testing phase.",
 
       // Job 3
       'job3.role': 'App Developer',
       'job3.date': 'Apr 2017 — Aug 2021',
-      'job3.company': 'INFOSOFT GmbH · Koblenz',
-      'job3.context': 'Docutain — a multiple award-winning document scanner app used by several million users worldwide.',
-      'job3.b1': 'Developed and optimised features for Docutain across <strong>Android and iOS</strong> — focusing on performance, stability, and user experience at millions-of-users scale.',
-      'job3.b2': 'Independently introduced <strong>automated UI testing</strong> into the release process — reducing undetected regressions before go-live and directly contributing to improved App Store ratings.',
+      'job3.company': 'INFOSOFT Informations- und Dokumentationssysteme GmbH · Koblenz',
+      'job3.context': '<a href="https://www.docutain.de/en/default" target="_blank" rel="noopener">Docutain</a> — a multiple award-winning document scanner app used by several million users worldwide.',
+      'job3.b1': 'Developed and optimised features for Docutain — a mobile application repeatedly awarded "Best Scanner App of the Year" with <strong>several million active users worldwide</strong> — focusing on performance, stability, and user experience on <strong>Android and iOS</strong>.',
+      'job3.b2': 'Independently introduced <strong>automated UI testing</strong> into the release process — demonstrably reduced undetected regressions before go-live and directly contributed to improved App Store ratings.',
       'job3.b3': 'Contributed to the <strong>Docutain SDK</strong> — a B2B solution enabling companies to integrate document scanning, barcode recognition, and data extraction in under a day.',
 
       // Projects
-      'proj1.name': 'Cloud Infrastructure — Kubernetes on AWS & Azure',
-      'proj1.desc': 'Fully orchestrated Kubernetes environments on AWS and Azure — including CI/CD pipelines, monitoring stack, security hardening, and secrets management. Built independently end-to-end.',
-      'proj2.name': 'Deutsch Learning Agent — Local AI Chatbot',
-      'proj2.desc': 'Locally running AI chatbot powered by Mistral 7B via Ollama for German language learning through conversation. Fully containerised with Docker Compose, Streamlit frontend, web agent component — zero cloud dependency, zero API costs.',
+      'proj1.name': 'Self-developed Cloud Infrastructure Projects',
+      'proj1.desc': 'Fully orchestrated Kubernetes environments on AWS and Azure, including CI/CD, monitoring, security hardening, and secrets management.',
+      'proj2.name': 'Deutsch Learning Agent (Personal Project)',
+      'proj2.desc': 'Locally running AI chatbot powered by Mistral 7B (Ollama) for German language learning through conversation. Fully containerised with Docker Compose, Streamlit frontend, including a web agent component — without any cloud dependency or API costs.',
 
       'footer.location': 'Munich, Germany',
       'footer.source': '// Source on GitHub'
@@ -567,14 +591,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       'sb.skills': 'Fähigkeiten',
       'sb.languages': 'Sprachen',
       'sb.education': 'Ausbildung',
-      'sb.additional': 'Sonstiges',
+      'sb.additional': 'Mobilität',
 
-      'skills.cloud': 'Cloud & Infrastruktur',
-      'skills.cicd': 'CI/CD & Monitoring',
       'skills.scripting': 'Programmierung & Skripting',
-      'skills.databases': 'Datenbanken',
+      'skills.cloud': 'DevOps & Cloud Technologien',
       'skills.ai': 'KI & LLM',
+      'skills.cicd': 'CI/CD & Testing',
+      'skills.monitoring': 'Überwachung & Protokollierung',
+      'skills.databases': 'Datenbanken',
+      'skills.versioncontrol': 'Versionskontrolle',
       'skills.tooling': 'Weitere Tools',
+
+      'tag.llm_local': 'LLM-Integration (lokal)',
+      'tag.cicd_pipes': 'CI/CD-Pipelines',
+      'tag.test_auto': 'Testautomatisierung',
+      'tag.load_test': 'Lasttests',
 
       'lang.german': 'Deutsch',
       'lang.english': 'Englisch',
@@ -584,9 +615,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       'lang.fluent': 'Fließend',
       'lang.native': 'Muttersprache',
 
-      'edu.meng': 'M.Eng. Informationstechnik',
-      'edu.fra': 'Frankfurt University of Applied Sciences, Deutschland',
-      'edu.bsc': 'B.Sc. Informations- und Kommunikationstechnik',
+      'edu.meng': 'Master of Engineering – Information Technology',
+      'edu.fra': 'Frankfurt University of Applied Sciences, Frankfurt am Main, Deutschland',
+      'edu.bsc': 'Bachelor of Science – Information and Communication Engineering',
       'edu.ewu': 'East-West University, Dhaka, Bangladesch',
 
       'extra.license': '🚗 Führerschein Klasse B vorhanden',
@@ -598,35 +629,35 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       'job1.role': 'Cloud & Backend Engineer',
       'job1.date': 'Jan 2026 — heute',
       'job1.company': 'Megacom EDV-Lösungen GmbH · München',
-      'job1.context': 'Verantworte die vollständige technische Transformation des 30 Jahre alten ERP-Kernsystems BDBWin, das von über 3.000 Anwendern im deutschsprachigen Baustoff- und Holzfachhandel genutzt wird.',
-      'job1.b1': 'Treibende Kraft bei <strong>Architekturentscheidungen, Risikobewertung und Migrationsroadmap</strong> für eine vollständige technische Transformation im Produktivbetrieb.',
-      'job1.b2': 'Treibe die Migration von der proprietären <strong>ISAM → PostgreSQL</strong> voran — Ablösung einer Datenschicht, die seit über zwei Jahrzehnten nicht erneuert wurde, bei laufendem Produktivbetrieb mit 100–150 aktiven Geschäftskunden.',
-      'job1.b3': 'Definiere <strong>Budgetrahmen, API-Schnittstellenstrategie und Cloud-native Architekturprinzipien</strong> vor dem ersten produktiven Rollout (AWS / Azure).',
+      'job1.context': 'BDBWin — ein 30 Jahre altes ERP-Kernsystem, genutzt von über 3.000 Anwendern im deutschsprachigen Baustoff- und Holzfachhandel.',
+      'job1.b1': 'Verantworte die <strong>vollständige technische Transformation</strong> eines 30 Jahre alten ERP-Kernsystems (BDBWin), das von über 3.000 Anwendern im deutschsprachigen Baustoff- und Holzfachhandel genutzt wird — treibende Kraft bei <strong>Architekturentscheidungen, Risikobewertung und Migrationsroadmap</strong>.',
+      'job1.b2': 'Entwickle und treibe die Migration von einer proprietären <strong>ISAM-Datenbankarchitektur auf PostgreSQL</strong> voran — Ablösung einer Datenschicht, die seit über zwei Jahrzehnten nicht grundlegend erneuert wurde, bei laufendem Produktivbetrieb mit <strong>100–150 aktiven Geschäftskunden</strong>.',
+      'job1.b3': 'Definiere <strong>Budgetrahmen, Architekturprinzipien und API-Schnittstellenstrategie</strong> vor dem ersten produktiven Rollout — Ziel: hochverfügbare, skalierbare Infrastruktur auf Basis moderner Cloud-Patterns (AWS/Azure).',
       'job1.b4': 'Entwickle das technische Rückgrat für <strong>BDBWin KI</strong> — die nächste Produktgeneration mit KI-gestützten ERP-Funktionen — durch saubere API-Abstraktion, modulare Datenbankschicht und Cloud-native Architekturprinzipien.',
 
       // Job 2
       'job2.role': 'Software Entwickler',
       'job2.date': 'Sep 2021 — Feb 2025',
       'job2.company': 'Mentz GmbH · München',
-      'job2.context': 'Kritische digitale Infrastruktur auf fünf Kontinenten, täglich von Millionen Fahrgästen genutzt. DevOps- und Cloud-Verantwortung eigenständig und freiwillig übernommen — zusätzlich zur Kerntätigkeit als Softwareentwickler.',
-      'job2.b1': 'Erkannte einen systematischen Engpass im Release-Prozess einer Multi-Client-Architektur — entwarf und implementierte die vollständige Automatisierungslösung eigenständig. Ergebnis: <strong>30% kürzere Pipeline-Laufzeit.</strong>',
-      'job2.b2': 'Mitverantwortlich für die Release-Stabilität einer Plattform, die <strong>Verkehrsnetze auf fünf Kontinenten</strong> versorgt — jede Produktionsstörung hätte direkte reale Auswirkungen auf Millionen Fahrgäste gehabt.',
-      'job2.b3': 'Erkannte frühzeitig das bevorstehende End-of-Life der mobilen Plattform — traf die strategische Migrationsentscheidung und verantwortete die vollständige Umsetzung. Ergebnis: <strong>25% schnellere Entwicklungszyklen.</strong>',
-      'job2.b4': 'Initiierte und entwarf die <strong>erste Cloud-Infrastruktur</strong> des Unternehmens — alle Designentscheidungen zu Hochverfügbarkeit, Secrets-Management, Pipeline-Automatisierung und Budgetsteuerung bis zur produktionsreifen Testphase.',
+      'job2.context': 'Kritische digitale Infrastruktur. Fünf Kontinente. Millionen von Fahrgästen täglich. DevOps- und Cloud-Verantwortung eigenständig und freiwillig übernommen — zusätzlich zur Kerntätigkeit als Softwareentwickler.',
+      'job2.b1': 'Erkannte einen <strong>systematischen Engpass</strong> im Release-Prozess einer Multi-Client-Architektur — übernahm die Verantwortung ohne auf Freigabe zu warten, entwarf und implementierte die vollständige Automatisierungslösung eigenständig. Ergebnis: <strong>30% kürzere Pipeline-Laufzeit</strong>.',
+      'job2.b2': 'Mitverantwortlich für die Release-Stabilität einer Plattform, die <strong>Verkehrsnetze auf fünf Kontinenten</strong> versorgt — jede Produktionsstörung hätte direkte reale Auswirkungen auf <strong>Millionen von Fahrgästen täglich</strong> gehabt. Unter diesem Druck war stabiler Betrieb keine Option, sondern Pflicht.',
+      'job2.b3': 'Erkannte frühzeitig das bevorstehende <strong>End-of-Life</strong> der mobilen Plattform — traf die strategische Entscheidung zur Migration und verantwortete die vollständige Umsetzung. Ergebnis: <strong>25% schnellere Entwicklungszyklen</strong>.',
+      'job2.b4': 'Initiierte und entwarf die <strong>erste Cloud-Infrastruktur</strong> des Unternehmens — traf alle Designentscheidungen zu Hochverfügbarkeit, Secrets-Management, Pipeline-Automatisierung und Budgetsteuerung. Projekt bis zur produktionsreifen Testphase geführt.',
 
       // Job 3
       'job3.role': 'App-Entwickler',
       'job3.date': 'Apr 2017 — Aug 2021',
-      'job3.company': 'INFOSOFT GmbH · Koblenz',
-      'job3.context': 'Docutain — mehrfach ausgezeichnete Dokumenten-Scanner-App, genutzt von mehreren Millionen Nutzern weltweit.',
-      'job3.b1': 'Entwickelte und optimierte Features für Docutain auf <strong>Android und iOS</strong> — mit Fokus auf Performance, Stabilität und Nutzererfahrung bei mehreren Millionen aktiven Nutzern.',
-      'job3.b2': 'Führte <strong>automatisierte UI-Tests</strong> eigenständig in den Release-Prozess ein — reduzierte unentdeckte Regressionen vor dem Go-Live und trug direkt zur Verbesserung der App-Store-Bewertungen bei.',
+      'job3.company': 'INFOSOFT Informations- und Dokumentationssysteme GmbH · Koblenz',
+      'job3.context': '<a href="https://www.docutain.de/en/default" target="_blank" rel="noopener">Docutain</a> — mehrfach ausgezeichnete Dokumenten-Scanner-App, genutzt von mehreren Millionen Nutzern weltweit.',
+      'job3.b1': 'Entwickelte und optimierte Features für Docutain — einer mehrfach als „Best Scanner App of the Year" ausgezeichneten mobilen Anwendung mit <strong>mehreren Millionen aktiven Nutzern weltweit</strong> — mit Fokus auf Performance, Stabilität und Nutzererfahrung auf <strong>Android und iOS</strong>.',
+      'job3.b2': 'Führte <strong>automatisierte UI-Tests</strong> eigenständig in den Release-Prozess ein — reduzierte unentdeckte Regressionen vor dem Go-Live nachweislich und trug direkt zur Verbesserung der App-Store-Bewertungen bei.',
       'job3.b3': 'Trug zur Weiterentwicklung des <strong>Docutain SDK</strong> bei — einer B2B-Lösung, die Unternehmen ermöglicht, Dokumentenscanning, Barcode-Erkennung und Datenextraktion in weniger als einem Tag in eigene Apps zu integrieren.',
 
       // Projects
-      'proj1.name': 'Cloud-Infrastruktur — Kubernetes auf AWS & Azure',
-      'proj1.desc': 'Vollständig orchestrierte Kubernetes-Umgebungen auf AWS und Azure — inkl. CI/CD-Pipelines, Monitoring-Stack, Security-Hardening und Secrets-Management. Eigenständig entwickelt — Ende zu Ende.',
-      'proj2.name': 'Deutsch Learning Agent — Lokaler KI-Chatbot',
+      'proj1.name': 'Eigenständig entwickelte Cloud-Infrastrukturprojekte',
+      'proj1.desc': 'vollständig orchestrierte Kubernetes-Umgebungen auf AWS und Azure, inkl. CI/CD, Monitoring, Security-Hardening und Secrets-Management.',
+      'proj2.name': 'Deutsch Learning Agent (Eigenprojekt)',
       'proj2.desc': 'Lokal laufender KI-Chatbot auf Basis von Mistral 7B (Ollama) zum Deutschlernen via Konversation. Vollständig containerisiert mit Docker Compose, Streamlit-Frontend, inkl. Web-Agent-Komponente — ohne Cloud-Abhängigkeit oder API-Kosten.',
 
       'footer.location': 'München, Deutschland',
